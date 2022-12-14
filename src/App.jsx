@@ -3,12 +3,14 @@ import useForm from "./hooks/useForm";
 
 const App = () => {
 
+    // hook form
     const { formState, onInputChange } = useForm({
         username: '',
         email: '',
         password: ''
     });
 
+    // destructuración
     const { username, email, password } = formState;
 
     return (
@@ -35,7 +37,14 @@ const App = () => {
                     onChange={onInputChange}
                 />
 
-                <button className="btn btn-primary mt-4">SEND</button>
+                <button
+                    disabled={username || email || password === '' ? "true" : "false"}
+                    onClick={()=>{
+                        console.log(formState)
+                    }}
+                    className="btn btn-primary mt-4">
+                    SEND
+                </button>
 
             </div>
 
