@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useForm from "./hooks/useForm";
 
 const App = () => {
 
     // hook form
-    const { formState, onInputChange } = useForm({
+    const { onInputChange, resetVariables, username, email, password } = useForm({
         username: '',
         email: '',
         password: ''
     });
-
-    // destructuración
-    const { username, email, password } = formState;
 
     return (
         <>
@@ -38,10 +35,7 @@ const App = () => {
                 />
 
                 <button
-                    disabled={username || email || password === '' ? "true" : "false"}
-                    onClick={()=>{
-                        console.log(formState)
-                    }}
+                    onClick={resetVariables}
                     className="btn btn-primary mt-4">
                     SEND
                 </button>
